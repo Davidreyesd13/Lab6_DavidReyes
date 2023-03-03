@@ -9,8 +9,8 @@ public class Oyentes extends Usuarios {
     ArrayList<playlist> list;
     ArrayList<playlist> listfav;
 
-    public Oyentes(String name, ArrayList<Canciones> canciones, ArrayList<playlist> list, ArrayList<playlist> listfav, String pass, String user, int edad) {
-        super(pass, user, edad);
+    public Oyentes(String name, ArrayList<Canciones> canciones, ArrayList<playlist> list, ArrayList<playlist> listfav, String pass, String user, int edad,String tipo) {
+        super(pass, user, edad,tipo);
         this.name = name;
         this.canciones = canciones;
         this.list = list;

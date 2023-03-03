@@ -1,13 +1,18 @@
 package lab6_davidreyes;
 
-public class Usuarios {
-private String pass,user;
-private int edad;
+import java.util.Date;
 
-    public Usuarios(String pass, String user, int edad) {
+public class Usuarios {
+
+    private String pass, user;
+    private int edad;
+    private String tipo;
+
+    public Usuarios(String pass, String user, int edad,String tipo) {
         this.pass = pass;
         this.user = user;
         this.edad = edad;
+        this.tipo=tipo;
     }
 
     public Usuarios() {
@@ -36,7 +41,7 @@ private int edad;
     public void setEdad(int edad) {
         this.edad = edad;
     }
-
+    
     @Override
     public String toString() {
         return "Usuarios{" + "pass=" + pass + ", user=" + user + ", edad=" + edad + '}';

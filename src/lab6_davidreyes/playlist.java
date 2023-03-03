@@ -3,15 +3,18 @@ package lab6_davidreyes;
 import java.util.ArrayList;
 
 public class playlist {
-   String nombre;
+   String user;
+    String nombre;
    int contl;
    ArrayList<Canciones> canciones;
 
-    public playlist(String nombre, int contl, ArrayList<Canciones> canciones) {
+    public playlist(String user, String nombre, int contl, ArrayList<Canciones> canciones) {
+        this.user = user;
         this.nombre = nombre;
         this.contl = contl;
         this.canciones = canciones;
     }
+
 
     public playlist() {
     }
@@ -40,6 +43,15 @@ public class playlist {
         this.canciones = canciones;
     }
 
+    public String getUser() {
+        return user;
+    }
+
+    public void setUser(String user) {
+        this.user = user;
+    }
+
+    
     @Override
     public String toString() {
         return "playlist{" + "nombre=" + nombre + ", contl=" + contl + ", canciones=" + canciones + '}';

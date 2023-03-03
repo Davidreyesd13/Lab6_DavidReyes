@@ -8,9 +8,9 @@ public class Artistas extends Usuarios {
     ArrayList<Canciones> canciones;
     ArrayList<Albumes> albumes;
 
-    public Artistas(String nombreartis, ArrayList<Canciones> canciones, ArrayList<Albumes> albumes, String pass, String user, int edad) {
+    public Artistas(String nombreartis, ArrayList<Canciones> canciones, ArrayList<Albumes> albumes, String pass, String user, int edad,String tipo) {
         super(pass, user, 
-                edad);
+                edad,tipo);
         this.nombreartis = nombreartis;
         this.canciones = canciones;
         this.albumes = albumes;

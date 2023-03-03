@@ -4,12 +4,12 @@ public class Canciones {
 
     String titulo;
     int duracion;
-    String album;
+    String idlanzamiento;
 
     public Canciones(String titulo, int duracion, String album) {
         this.titulo = titulo;
         this.duracion = duracion;
-        this.album=album;
+        this.idlanzamiento=album;
     }
 
     public String getTitulo() {
@@ -28,17 +28,17 @@ public class Canciones {
         this.duracion = duracion;
     }
 
-    public String getAlbum() {
-        return album;
+    public String getidLanzamiento() {
+        return idlanzamiento;
     }
 
-    public void setAlbum(String album) {
-        this.album = album;
+    public void setidLanzamiento(String album) {
+        this.idlanzamiento = album;
     }
 
     @Override
     public String toString() {
-        return "Canciones{" + "titulo=" + titulo + ", duracion=" + duracion + ", album=" + album + '}';
+        return "Canciones{" + "titulo=" + titulo + ", duracion=" + duracion + ", album=" +idlanzamiento + '}';
     }
 
 }

@@ -4,6 +4,11 @@
  */
 package lab6_davidreyes;
 
+import java.util.ArrayList;
+import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+
 /**
  *
  * @author david
@@ -13,6 +18,11 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
+    ArrayList<Usuarios> users = new ArrayList();
+    ArrayList<Canciones> canciones = new ArrayList();
+    ArrayList<playlist> playlist = new ArrayList();
+    ArrayList<Lanzamientos> lanzamientos = new ArrayList();
+
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -27,14 +37,101 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jf_Crear = new javax.swing.JFrame();
+        jp_Oyente = new javax.swing.JPanel();
+        jTextField1 = new javax.swing.JTextField();
+        jt_user = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
+        jt_pass = new javax.swing.JTextField();
+        jTextField5 = new javax.swing.JTextField();
+        js_edad = new javax.swing.JSpinner();
+        jLabel4 = new javax.swing.JLabel();
+        jbc_usuario = new javax.swing.JComboBox<>();
+        jb_crear = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jf_simulacionoyente = new javax.swing.JFrame();
+        jf_simulacionartist = new javax.swing.JFrame();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jtf_Usuario = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jpf_pass = new javax.swing.JPasswordField();
+        jb_ingresar = new javax.swing.JButton();
+        Jb_crear = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+
+        jp_Oyente.setBackground(new java.awt.Color(0, 0, 0));
+        jp_Oyente.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jTextField1.setEditable(false);
+        jTextField1.setText("Usuario");
+        jp_Oyente.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 60, -1));
+        jp_Oyente.add(jt_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 220, -1));
+
+        jTextField3.setText("Password");
+        jp_Oyente.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 70, -1));
+        jp_Oyente.add(jt_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 220, -1));
+
+        jTextField5.setText("Edad");
+        jp_Oyente.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 50, -1));
+
+        js_edad.setModel(new javax.swing.SpinnerNumberModel(12, 12, 100, 1));
+        jp_Oyente.add(js_edad, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 220, -1, -1));
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 14)); // NOI18N
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setText("Tipo de Usuario");
+        jp_Oyente.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jbc_usuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Oyente", "Artista" }));
+        jp_Oyente.add(jbc_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 151, -1));
+
+        jb_crear.setText("Crear");
+        jb_crear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_crearMouseClicked(evt);
+            }
+        });
+        jp_Oyente.add(jb_crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 100, -1));
+
+        jButton2.setText("Regresar");
+        jp_Oyente.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 100, -1));
+
+        javax.swing.GroupLayout jf_CrearLayout = new javax.swing.GroupLayout(jf_Crear.getContentPane());
+        jf_Crear.getContentPane().setLayout(jf_CrearLayout);
+        jf_CrearLayout.setHorizontalGroup(
+            jf_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jp_Oyente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+        jf_CrearLayout.setVerticalGroup(
+            jf_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jf_CrearLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jp_Oyente, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(161, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jf_simulacionoyenteLayout = new javax.swing.GroupLayout(jf_simulacionoyente.getContentPane());
+        jf_simulacionoyente.getContentPane().setLayout(jf_simulacionoyenteLayout);
+        jf_simulacionoyenteLayout.setHorizontalGroup(
+            jf_simulacionoyenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jf_simulacionoyenteLayout.setVerticalGroup(
+            jf_simulacionoyenteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jf_simulacionartistLayout = new javax.swing.GroupLayout(jf_simulacionartist.getContentPane());
+        jf_simulacionartist.getContentPane().setLayout(jf_simulacionartistLayout);
+        jf_simulacionartistLayout.setHorizontalGroup(
+            jf_simulacionartistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jf_simulacionartistLayout.setVerticalGroup(
+            jf_simulacionartistLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -44,15 +141,20 @@ public class Login extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 24)); // NOI18N
         jLabel2.setText("Password");
 
-        jButton1.setText("Ingresar");
-        jButton1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jb_ingresar.setText("Ingresar");
+        jb_ingresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
 
-        jButton2.setForeground(new java.awt.Color(0, 153, 255));
-        jButton2.setText("Crear Cuenta");
-        jButton2.setBorderPainted(false);
-        jButton2.setContentAreaFilled(false);
-        jButton2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jButton2.setFocusPainted(false);
+        Jb_crear.setForeground(new java.awt.Color(0, 153, 255));
+        Jb_crear.setText("Crear Cuenta");
+        Jb_crear.setBorderPainted(false);
+        Jb_crear.setContentAreaFilled(false);
+        Jb_crear.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Jb_crear.setFocusPainted(false);
+        Jb_crear.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                Jb_crearMouseClicked(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI Semibold", 0, 36)); // NOI18N
         jLabel3.setText("Spotify");
@@ -66,10 +168,10 @@ public class Login extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(98, 98, 98)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jTextField1)
-                            .addComponent(jPasswordField1)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)))
+                            .addComponent(jtf_Usuario)
+                            .addComponent(jpf_pass)
+                            .addComponent(jb_ingresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(Jb_crear, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(169, 169, 169)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -89,15 +191,15 @@ public class Login extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jtf_Usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jLabel2)
                 .addGap(29, 29, 29)
-                .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jpf_pass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(27, 27, 27)
-                .addComponent(jButton1)
+                .addComponent(jb_ingresar)
                 .addGap(36, 36, 36)
-                .addComponent(jButton2)
+                .addComponent(Jb_crear)
                 .addGap(55, 55, 55))
         );
 
@@ -114,6 +216,34 @@ public class Login extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void Jb_crearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Jb_crearMouseClicked
+        // TODO add your handling code here:
+        jf_Crear.setSize(279, 350);
+        jf_Crear.setVisible(true);
+        jf_Crear.setLocationRelativeTo(null);
+        this.setVisible(false);
+    }//GEN-LAST:event_Jb_crearMouseClicked
+
+    private void jb_crearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_crearMouseClicked
+        // TODO add your handling code here:
+
+        if (!users.get(users.size()).getUser().equals(jt_user.getText())) {
+            if(jbc_usuario.getSelectedItem().equals("Artista")){
+            users.add(new Usuarios(jt_pass.getText(), jt_user.getText(), Integer.parseInt(js_edad.getValue().toString()),"Artista"));
+            }else{
+             users.add(new Usuarios(jt_pass.getText(), jt_user.getText(), Integer.parseInt(js_edad.getValue().toString()),"Cliente"));   
+            }
+            crearBitacora(jt_user, jbc_usuario);
+            jt_user.setText("");
+            jt_pass.setText("");
+            
+        } else {
+            JOptionPane.showMessageDialog(this, "Usuario ya existente");
+        }
+
+
+    }//GEN-LAST:event_jb_crearMouseClicked
 
     /**
      * @param args the command line arguments
@@ -151,13 +281,31 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton Jb_crear;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPasswordField jPasswordField1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField5;
+    private javax.swing.JButton jb_crear;
+    private javax.swing.JButton jb_ingresar;
+    private javax.swing.JComboBox<String> jbc_usuario;
+    private javax.swing.JFrame jf_Crear;
+    private javax.swing.JFrame jf_simulacionartist;
+    private javax.swing.JFrame jf_simulacionoyente;
+    private javax.swing.JPanel jp_Oyente;
+    private javax.swing.JPasswordField jpf_pass;
+    private javax.swing.JSpinner js_edad;
+    private javax.swing.JTextField jt_pass;
+    private javax.swing.JTextField jt_user;
+    private javax.swing.JTextField jtf_Usuario;
     // End of variables declaration//GEN-END:variables
+
+    private void crearBitacora(JTextField user, JComboBox tipo) {
+        
+    }
 }
