@@ -4,7 +4,10 @@
  */
 package lab6_davidreyes;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
@@ -18,14 +21,19 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Login
      */
-    ArrayList<Usuarios> users = new ArrayList();
-    ArrayList<Canciones> canciones = new ArrayList();
-    ArrayList<playlist> playlist = new ArrayList();
-    ArrayList<Lanzamientos> lanzamientos = new ArrayList();
+    Adm_Usuarios admu = new Adm_Usuarios("./usuarios.txt");
+    Adm_bitacora bitacora = new Adm_bitacora("./Bitacora.txt");
+    Adm_Lanzamientos lanzamientos = new Adm_Lanzamientos("./lanzamiento.txt");
+    Adm_Canciones canciones = new Adm_Canciones("./Canciones.txt");
+    adm_Playlist albumes = new adm_Playlist("./PlayList.txt");
 
+        
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
+        admu.cargarArchivo();
+        bitacora.cargarArchivo();
+        
     }
 
     /**
@@ -47,8 +55,10 @@ public class Login extends javax.swing.JFrame {
         js_edad = new javax.swing.JSpinner();
         jLabel4 = new javax.swing.JLabel();
         jbc_usuario = new javax.swing.JComboBox<>();
-        jb_crear = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        jb_crearuser = new javax.swing.JButton();
+        jb_back = new javax.swing.JButton();
+        tf_nombreArt = new javax.swing.JTextField();
+        jtf_na = new javax.swing.JTextField();
         jf_simulacionoyente = new javax.swing.JFrame();
         jf_simulacionartist = new javax.swing.JFrame();
         jPanel1 = new javax.swing.JPanel();
@@ -68,10 +78,12 @@ public class Login extends javax.swing.JFrame {
         jp_Oyente.add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 70, 60, -1));
         jp_Oyente.add(jt_user, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 100, 220, -1));
 
+        jTextField3.setEditable(false);
         jTextField3.setText("Password");
         jp_Oyente.add(jTextField3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 130, 70, -1));
         jp_Oyente.add(jt_pass, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 160, 220, -1));
 
+        jTextField5.setEditable(false);
         jTextField5.setText("Edad");
         jp_Oyente.add(jTextField5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 190, 50, -1));
 
@@ -84,31 +96,42 @@ public class Login extends javax.swing.JFrame {
         jp_Oyente.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
 
         jbc_usuario.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Oyente", "Artista" }));
-        jp_Oyente.add(jbc_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 151, -1));
-
-        jb_crear.setText("Crear");
-        jb_crear.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jb_crearMouseClicked(evt);
+        jbc_usuario.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jbc_usuarioItemStateChanged(evt);
             }
         });
-        jp_Oyente.add(jb_crear, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, 100, -1));
+        jp_Oyente.add(jbc_usuario, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 40, 151, -1));
 
-        jButton2.setText("Regresar");
-        jp_Oyente.add(jButton2, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 250, 100, -1));
+        jb_crearuser.setText("Crear");
+        jb_crearuser.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jb_crearuserMouseClicked(evt);
+            }
+        });
+        jp_Oyente.add(jb_crearuser, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 310, 100, -1));
+
+        jb_back.setText("Regresar");
+        jp_Oyente.add(jb_back, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 310, 100, -1));
+        jp_Oyente.add(tf_nombreArt, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 180, -1));
+
+        jtf_na.setEditable(false);
+        jtf_na.setText("Nombre Artistico");
+        jp_Oyente.add(jtf_na, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 250, -1, -1));
 
         javax.swing.GroupLayout jf_CrearLayout = new javax.swing.GroupLayout(jf_Crear.getContentPane());
         jf_Crear.getContentPane().setLayout(jf_CrearLayout);
         jf_CrearLayout.setHorizontalGroup(
             jf_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jp_Oyente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jf_CrearLayout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jp_Oyente, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jf_CrearLayout.setVerticalGroup(
             jf_CrearLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jf_CrearLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jp_Oyente, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(161, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jp_Oyente, javax.swing.GroupLayout.PREFERRED_SIZE, 363, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         javax.swing.GroupLayout jf_simulacionoyenteLayout = new javax.swing.GroupLayout(jf_simulacionoyente.getContentPane());
@@ -219,31 +242,101 @@ public class Login extends javax.swing.JFrame {
 
     private void Jb_crearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Jb_crearMouseClicked
         // TODO add your handling code here:
-        jf_Crear.setSize(279, 350);
+        jf_Crear.setSize(279, 369);
         jf_Crear.setVisible(true);
         jf_Crear.setLocationRelativeTo(null);
+        jtf_na.setVisible(false);
+        tf_nombreArt.setVisible(false);
         this.setVisible(false);
     }//GEN-LAST:event_Jb_crearMouseClicked
 
-    private void jb_crearMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_crearMouseClicked
+    private void jb_crearuserMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jb_crearuserMouseClicked
         // TODO add your handling code here:
-
-        if (!users.get(users.size()).getUser().equals(jt_user.getText())) {
-            if(jbc_usuario.getSelectedItem().equals("Artista")){
-            users.add(new Usuarios(jt_pass.getText(), jt_user.getText(), Integer.parseInt(js_edad.getValue().toString()),"Artista"));
-            }else{
-             users.add(new Usuarios(jt_pass.getText(), jt_user.getText(), Integer.parseInt(js_edad.getValue().toString()),"Cliente"));   
+        
+        int edad = Integer.parseInt(js_edad.getValue().toString());
+        boolean flag = false;
+        //Adm_Usuarios admu = new Adm_Usuarios("./usuarios.txt");
+        if (!admu.getListausers().isEmpty()) {
+            for (int i = 0; i < admu.getListausers().size(); i++) {
+                if (admu.getListausers().get(i).getUser().equals(jt_user.getText())) {
+                    flag = true;
+                }
             }
-            crearBitacora(jt_user, jbc_usuario);
-            jt_user.setText("");
-            jt_pass.setText("");
-            
+            if (flag == false) {
+                if (jbc_usuario.getSelectedItem().equals("Artista")) {
+                    try {
+                        admu.getListausers().add(new Usuarios(jt_pass.getText(), jt_user.getText(), edad, "Artista"));
+                        bitacora.getListausersb().add(new Usuarios(jt_pass.getText(), jt_user.getText(), edad, "Artista"));
+                        bitacora.escribirArchivo();
+                        JOptionPane.showMessageDialog(this, "Creado con exito");
+                        jt_user.setText("");
+                        jt_pass.setText("");
+                        admu.escribirArchivo();
+                    } catch (IOException ex) {
+
+                    }
+                } else {
+                    try {
+                        admu.getListausers().add(new Usuarios(jt_pass.getText(), jt_user.getText(), edad, "Cliente"));
+                        bitacora.getListausersb().add(new Usuarios(jt_pass.getText(), jt_user.getText(), edad, "Cliente"));
+                        bitacora.escribirArchivo();
+                        JOptionPane.showMessageDialog(this, "Creado con exito");
+                        jt_user.setText("");
+                        jt_pass.setText("");
+                        admu.escribirArchivo();
+                    } catch (IOException ex) {
+
+                    }
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(this, "Usuario ya existente");
+                jt_user.setText("");
+                jt_pass.setText("");
+            }
+
         } else {
-            JOptionPane.showMessageDialog(this, "Usuario ya existente");
+            if (jbc_usuario.getSelectedItem().equals("Artista")) {
+                try {
+                    admu.getListausers().add(new Usuarios(jt_pass.getText(), jt_user.getText(), edad, "Artista"));
+                    bitacora.getListausersb().add(new Usuarios(jt_pass.getText(), jt_user.getText(), edad, "Artista"));
+                    bitacora.escribirArchivo();
+                    JOptionPane.showMessageDialog(this, "Creado con exito");
+                    jt_user.setText("");
+                    jt_pass.setText("");
+                    admu.escribirArchivo();
+                } catch (IOException ex) {
+
+                }
+            } else {
+
+                try {
+                    admu.getListausers().add(new Usuarios(jt_pass.getText(), jt_user.getText(), edad, "Cliente"));
+                    bitacora.getListausersb().add(new Usuarios(jt_pass.getText(), jt_user.getText(), edad, "Cliente"));
+                    bitacora.escribirArchivo();
+                    JOptionPane.showMessageDialog(this, "Creado con exito");
+                    jt_user.setText("");
+                    jt_pass.setText("");
+                    admu.escribirArchivo();
+                } catch (IOException ex) {
+
+                }
+            }
         }
 
 
-    }//GEN-LAST:event_jb_crearMouseClicked
+    }//GEN-LAST:event_jb_crearuserMouseClicked
+
+    private void jbc_usuarioItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jbc_usuarioItemStateChanged
+        // TODO add your handling code here:
+        if(jbc_usuario.getSelectedItem().equals("Artista")){
+          jtf_na.setVisible(true);
+            tf_nombreArt.setVisible(true);
+        }else{
+            jtf_na.setVisible(false);
+            tf_nombreArt.setVisible(false);
+        }
+    }//GEN-LAST:event_jbc_usuarioItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -276,13 +369,13 @@ public class Login extends javax.swing.JFrame {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
+
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton Jb_crear;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -291,7 +384,8 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jTextField5;
-    private javax.swing.JButton jb_crear;
+    private javax.swing.JButton jb_back;
+    private javax.swing.JButton jb_crearuser;
     private javax.swing.JButton jb_ingresar;
     private javax.swing.JComboBox<String> jbc_usuario;
     private javax.swing.JFrame jf_Crear;
@@ -303,9 +397,9 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JTextField jt_pass;
     private javax.swing.JTextField jt_user;
     private javax.swing.JTextField jtf_Usuario;
+    private javax.swing.JTextField jtf_na;
+    private javax.swing.JTextField tf_nombreArt;
     // End of variables declaration//GEN-END:variables
 
-    private void crearBitacora(JTextField user, JComboBox tipo) {
-        
-    }
+
 }

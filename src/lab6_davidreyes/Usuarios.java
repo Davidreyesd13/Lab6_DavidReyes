@@ -8,14 +8,22 @@ public class Usuarios {
     private int edad;
     private String tipo;
 
-    public Usuarios(String pass, String user, int edad,String tipo) {
+    public Usuarios(String pass, String user, int edad, String tipo) {
         this.pass = pass;
         this.user = user;
         this.edad = edad;
-        this.tipo=tipo;
+        this.tipo = tipo;
     }
 
     public Usuarios() {
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     public String getPass() {
@@ -41,7 +49,7 @@ public class Usuarios {
     public void setEdad(int edad) {
         this.edad = edad;
     }
-    
+
     @Override
     public String toString() {
         return "Usuarios{" + "pass=" + pass + ", user=" + user + ", edad=" + edad + '}';
